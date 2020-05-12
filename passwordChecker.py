@@ -30,7 +30,10 @@ def pwned_api_check(password):
     return get_password_leaks_count(response, tail)
 
 
-def main(args):
+def check_password(args):
+    '''
+    Check if password you pass as list argument have been leaked
+    '''
     for password in args:
         count = pwned_api_check(password)
         if count:
@@ -40,4 +43,4 @@ def main(args):
     return 'DONE'
 
 if __name__=='__main__':
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(check_password(sys.argv[1:]))
